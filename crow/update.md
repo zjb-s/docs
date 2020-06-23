@@ -78,19 +78,18 @@ cd ~/Downloads/crow-1.1.0
 ./osx_linux-update_firmware.command
 ```
 
+### Expected results
+
 After executing the `update_firmware` command, you'll see something like:
 
 ```console
 dfu-util 0.9
-
 Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
 Copyright 2010-2016 Tormod Volden and Stefan Schmidt
 This program is Free Software and has ABSOLUTELY NO WARRANTY
 Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
-
 dfu-util: Invalid DFU suffix signature
 dfu-util: A valid DFU suffix will be required in a future dfu-util release!!!
-Deducing device DFU version from functional descriptor length
 Opening DFU capable USB device...
 ID 0483:df11
 Run-time device DFU version 011a
@@ -101,11 +100,18 @@ dfuIDLE, continuing
 DFU mode device DFU version 011a
 Device returned transfer size 1024
 DfuSe interface name: "Internal Flash   "
-Downloading to address = 0x08020000, size = 290876
-Download	[=========================] 100%       290876 bytes
+Downloading to address = 0x08020000, size = 277644
+Download	[=========================] 100%       277644 bytes
 Download done.
 File downloaded successfully
+dfu-util: can't detach
+Resetting USB to switch back to runtime mode
+[Process completed]
 ```
+
+Those weird messages are totally expected. So long as you get `File downloaded successfully` and `[Process completed]`, the new firmware was successfully applied!
+
+You can also execute `^^v` in druid, which will report back the current firmware ID.
 
 ## Troubleshooting
 
